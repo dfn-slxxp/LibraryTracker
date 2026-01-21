@@ -1,5 +1,7 @@
 package library.project;
 
+import java.util.Optional;
+
 public class LibraryItem {
 
     public enum ItemType {
@@ -15,6 +17,9 @@ public class LibraryItem {
     protected String ItemName;
     protected boolean avaliability;
 
+    protected Optional<Date> CheckOutDate;
+    protected Optional<Date> DueDate;
+
     // Constructor
     public LibraryItem(String name) {
         this.id = nextID;
@@ -23,7 +28,6 @@ public class LibraryItem {
         this.ItemName = name;
         this.avaliability = true;
     }
-
     public LibraryItem(int id, String name, boolean avaliability) {
         this.id = id;
         this.ItemName = name;
@@ -44,12 +48,20 @@ public class LibraryItem {
         ItemName = name;
     }
 
-    public void checkOut() {
+    public void checkOut(Date CheckOutDate, Date DueDate) {
         this.avaliability = false;
+        this.CheckOutDate = Optional.of(CheckOutDate);
+        this.DueDate = Optional.of(DueDate);
     }
 
     public void checkIn() {
         this.avaliability = true;
+        this.CheckOutDate = Optional.empty();
+        this.DueDate = Optional.empty();
+    }
+
+    public void renew(Date date) {
+        this.checkOut(date, date.getDueDate());
     }
 
 }
