@@ -1,5 +1,6 @@
 package library.project.Items;
 
+import library.project.Date;
 import library.project.LibraryItem;
 
 public class Newspaper extends LibraryItem {
@@ -13,16 +14,18 @@ public class Newspaper extends LibraryItem {
     }
 
     protected NewspaperPublisher publisher;
+    protected Date publishDate;
 
     // Constructor
-    public Newspaper(String name, NewspaperPublisher publisher){
+    public Newspaper(String name, NewspaperPublisher publisher, Date publishDate) {
         super(name);
         this.publisher = publisher;
+        this.publishDate = publishDate;
     }
 
     public Newspaper(int id, String name, NewspaperPublisher publisher, boolean avaliability){
-    super(id, name, avaliability);
-    this.publisher = publisher;
+        super(id, name, avaliability);
+        this.publisher = publisher;
     }
 
 }

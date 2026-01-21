@@ -67,4 +67,26 @@ public class Date {
         }
     }
 
+    public String toString() {
+        String y = Integer.toString(this.getYear());
+        String m = (this.getMonth() < 10 ? "0" + Integer.toString(this.getMonth()) : Integer.toString(this.getMonth()));
+        String d = (this.getDay() < 10 ? "0" + Integer.toString(this.getDay()) : Integer.toString(this.getDay()));
+
+        return (y + m + d);
+    }
+
+    public Date fromString(String dateString) {
+        int date = Integer.parseInt(dateString);
+
+        int y;
+        int m;
+        int d;
+
+        d = date % 100;
+        m = (date / 100) % 100;
+        y = date / 10000;
+
+        return new Date(y, m, d);
+    }
+
 }

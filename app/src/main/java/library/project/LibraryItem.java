@@ -2,7 +2,7 @@ package library.project;
 
 import java.util.Optional;
 
-public class LibraryItem {
+public abstract class LibraryItem {
 
     public enum ItemType {
         BOOK,

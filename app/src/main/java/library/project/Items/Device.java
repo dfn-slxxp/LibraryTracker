@@ -6,7 +6,8 @@ public class Device extends LibraryItem {
     
     protected enum DeviceType {
         LAPTOP,
-        IPAD
+        IPAD,
+        DESKTOP
     }
 
     protected DeviceType deviceType;
