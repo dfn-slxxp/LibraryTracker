@@ -52,4 +52,14 @@ public class Book extends LibraryItem {
         this.genre = genre;
     }
 
+    @Override
+    public void printItem() {
+        System.out.println(this.ItemName + " By " + this.author);
+    }
+
+    @Override
+    public void printCheckedOutItem() {
+        System.out.println(this.ItemName + " By " + this.author + "; Checked Out on " + this.CheckOutDate.get().toString() + " and Due on " + this.DueDate.get().toString());
+    }
+
 }

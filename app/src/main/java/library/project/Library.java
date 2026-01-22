@@ -209,5 +209,11 @@ public class Library {
 
     }
 
+    public void printMembersWithCheckOuts() {
+        for (Member member : members) {
+            member.printCheckedOutItems();
+        }
+    }
+
 
 }

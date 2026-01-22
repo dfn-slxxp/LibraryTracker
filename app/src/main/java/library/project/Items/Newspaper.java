@@ -59,4 +59,14 @@ public class Newspaper extends LibraryItem {
         this.publisher = publisher;
     }
 
+    @Override
+    public void printItem() {
+        System.out.println(this.publisher.toString() + " Newspaper from " + this.publishDate.toString() + " with Title " + this.ItemName);
+    }
+
+    @Override
+    public void printCheckedOutItem() {
+        System.out.println(this.publisher.toString() + " Newspaper from " + this.publishDate.toString() + " with Title " + this.ItemName + "; Checked Out on " + this.CheckOutDate.get().toString() + " and Due on " + this.DueDate.get().toString());
+    }
+
 }

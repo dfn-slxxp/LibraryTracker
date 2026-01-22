@@ -49,4 +49,14 @@ public class Disk extends LibraryItem {
         this.diskType = type;
     }
 
+    @Override
+    public void printItem() {
+        System.out.println("A " + this.diskType.toString() + " titled " + this.ItemName);
+    }
+
+    @Override
+    public void printCheckedOutItem() {
+        System.out.println("A " + this.diskType.toString() + " titled " + this.ItemName + "; Checked Out on " + this.CheckOutDate.get().toString() + " and Due on " + this.DueDate.get().toString());
+    }
+
 }

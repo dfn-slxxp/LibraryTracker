@@ -80,4 +80,12 @@ public abstract class LibraryItem {
         nextID = next;
     }
 
+
+    // MISC
+    public void printItem() {
+        System.out.println(ItemName);
+    }
+    public void printCheckedOutItem() {
+        System.out.println(ItemName + "; Checked Out on " + this.CheckOutDate.get().toString() + " and Due on " + this.DueDate.get().toString());
+    }
 }

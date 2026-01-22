@@ -44,6 +44,8 @@ public class Librarian {
             System.err.println("Error parsing CSV: " + e.getMessage());
         }
 
+        library.printMembersWithCheckOuts();
+
     }
 
 }

@@ -38,4 +38,13 @@ public class Member {
         nextID = next;
     }
 
+    public void printCheckedOutItems() {
+        System.out.println(Name + " has " + ItemsCheckedOut.size() + " items Checked Out.");
+        if (ItemsCheckedOut.size() > 0) {
+            for (LibraryItem item : ItemsCheckedOut) {
+                item.printCheckedOutItem();
+            }
+        }
+    }
+
 }

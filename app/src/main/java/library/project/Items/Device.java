@@ -49,4 +49,14 @@ public class Device extends LibraryItem {
         this.deviceType = device;
     }
 
+    @Override
+    public void printItem() {
+        System.out.println(this.deviceType.toString() + " named " + this.ItemName);
+    }
+
+    @Override
+    public void printCheckedOutItem() {
+        System.out.println(this.deviceType.toString() + " named " + this.ItemName + "; Checked Out on " + this.CheckOutDate.get().toString() + " and Due on " + this.DueDate.get().toString());
+    }
+
 }

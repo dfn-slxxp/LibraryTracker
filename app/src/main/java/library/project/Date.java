@@ -101,6 +101,7 @@ public class Date {
         }
     }
 
+    @Override
     public String toString() {
         String y = Integer.toString(this.getYear());
         String m = (this.getMonth() < 10 ? "0" + Integer.toString(this.getMonth()) : Integer.toString(this.getMonth()));
