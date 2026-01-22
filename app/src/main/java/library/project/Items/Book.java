@@ -28,12 +28,24 @@ public class Book extends LibraryItem {
     protected BookGenre genre;
 
     // Constructor
+    /**
+     * @param title Book Title
+     * @param author Book Author
+     * @param genre BookGenre Genre
+     */
     public Book(String title, String author, BookGenre genre) {
         super(title);
         this.author = author;
         this.genre = genre;
     }
 
+    /**
+     * @param id LibraryItem Id
+     * @param title Book Title
+     * @param author Book Author
+     * @param genre BookGenre Genre
+     * @param avaliability Is this book avaliable?
+     */
     public Book(int id, String title, String author, BookGenre genre, boolean avaliability) {
         super(id, title, avaliability);
         this.author = author;

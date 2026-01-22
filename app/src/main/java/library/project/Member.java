@@ -30,4 +30,12 @@ public class Member {
         item.checkOut(date, date.getDueDate());
     }
 
+    public int getId() {
+        return this.id;
+    }
+
+    public static void updateNextID(int next) {
+        nextID = next;
+    }
+
 }

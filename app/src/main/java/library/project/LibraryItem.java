@@ -43,6 +43,10 @@ public abstract class LibraryItem {
         return avaliability;
     }
 
+    public int getId() {
+        return id;
+    }
+
     // Setters
     public void setItemName(String name) {
         ItemName = name;
@@ -62,6 +66,10 @@ public abstract class LibraryItem {
 
     public void renew(Date date) {
         this.checkOut(date, date.getDueDate());
+    }
+
+    public static void updateNextID(int next) {
+        nextID = next;
     }
 
 }

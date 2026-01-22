@@ -35,12 +35,25 @@ public class Newspaper extends LibraryItem {
     protected Date publishDate;
 
     // Constructor
+    /**
+     * 
+     * @param name
+     * @param publisher
+     * @param publishDate
+     */
     public Newspaper(String name, NewspaperPublisher publisher, Date publishDate) {
         super(name);
         this.publisher = publisher;
         this.publishDate = publishDate;
     }
 
+    /**
+     * 
+     * @param id
+     * @param name
+     * @param publisher
+     * @param avaliability
+     */
     public Newspaper(int id, String name, NewspaperPublisher publisher, boolean avaliability){
         super(id, name, avaliability);
         this.publisher = publisher;

@@ -27,11 +27,23 @@ public class Device extends LibraryItem {
     protected DeviceType deviceType;
 
     // Constructor
+    /**
+     * 
+     * @param name
+     * @param device
+     */
     public Device(String name, DeviceType device) {
         super(name);
         this.deviceType = device;
     }
 
+    /**
+     * 
+     * @param id
+     * @param name
+     * @param device
+     * @param avaliability
+     */
     public Device(int id, String name, DeviceType device, boolean avaliability) {
         super(id, name, avaliability);
         this.deviceType = device;

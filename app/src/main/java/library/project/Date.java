@@ -7,6 +7,12 @@ public class Date {
     public int Day;
     
     // Constructor
+    /**
+     * 
+     * @param Year
+     * @param Month
+     * @param Day
+     */
     public Date(int Year, int Month, int Day) {
         this.Year = Year;
         this.Month = Month;
@@ -75,7 +81,7 @@ public class Date {
         return (y + m + d);
     }
 
-    public Date fromString(String dateString) {
+    public static Date fromString(String dateString) {
         int date = Integer.parseInt(dateString);
 
         int y;

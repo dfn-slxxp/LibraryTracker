@@ -59,10 +59,56 @@ public class Library {
                     break;
             }
         }
+
+        sortItemsByID();
     }
 
-    public void sortMembersById() {
-        
+    public void sortMembersByID() {
+        for (int i = 0; i < this.members.size(); i++) {
+
+            int min_idx = i;
+
+            for (int j = i + 1; j < this.members.size(); j++) {
+
+                if (members.get(j).getId() < members.get(min_idx).getId()) {
+
+                    min_idx = j;
+
+                }
+
+            }
+
+            Member tmp = members.get(i);
+            members.set(i, members.get(min_idx));
+            members.set(min_idx, tmp);
+
+        }
+
+        Member.updateNextID(members.getLast().getId());
+    }
+
+    public void sortItemsByID() {
+        for (int i = 0; i < this.items.size(); i++) {
+
+            int min_idx = i;
+
+            for (int j = i + 1; j < this.items.size(); j++) {
+
+                if (items.get(j).getId() < items.get(min_idx).getId()) {
+
+                    min_idx = j;
+
+                }
+
+            }
+
+            LibraryItem tmp = items.get(i);
+            items.set(i, items.get(min_idx));
+            items.set(min_idx, tmp);
+
+        }
+
+        LibraryItem.updateNextID(items.getLast().getId());
     }
 
     public void loadMembers(InputStream stream) throws IOException, CsvException {
@@ -71,13 +117,36 @@ public class Library {
         for (String[] member : fileContents) {
             this.members.add(new Member(member[1], Integer.valueOf(member[0])));
         }
+        sortMembersByID();
+    }
+
+    public Member getMemberById(int id) {
+        for (Member member : members) {
+            if (member.getId() == id) {
+                return member;
+            }
+        }
+        return null;
+    }
+
+    public LibraryItem getItemById(int id) {
+        for (LibraryItem item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public void loadCheckouts(InputStream stream) throws IOException, CsvException {
         this.members = new ArrayList<Member>();
         List<String[]> fileContents = this.readCSV(stream);
         for (String[] checkouts : fileContents) {
-            
+            int member_iden = Integer.parseInt(checkouts[0]);
+            int item_iden = Integer.parseInt(checkouts[1]);
+            Date checkout_date = Date.fromString(checkouts[2]);
+
+            getMemberById(member_iden).CheckOutItem(getItemById(item_iden), checkout_date);
         }
     }
 
