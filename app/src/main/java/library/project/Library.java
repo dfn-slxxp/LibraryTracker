@@ -25,8 +25,7 @@ public class Library {
     protected ArrayList<LibraryItem> items;
 
     // Constructor
-    public Library(ArrayList<LibraryItem> items) {
-        this.items = items;
+    public Library() {
     }
 
     public void loadItems(InputStream stream) throws IOException, CsvException {

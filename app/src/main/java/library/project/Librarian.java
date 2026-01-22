@@ -3,6 +3,47 @@
  */
 package library.project;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.FileSystems;
+import java.util.Scanner;
+
+import com.opencsv.exceptions.CsvException;
+
 public class Librarian {
     
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please input path to CSV file containing Library Items: (default to Items.csv) ");
+        String itemsPath = scanner.nextLine();
+
+        System.out.println("Please input path to CSV file containing Library Members: (default to Members.csv) ");
+        String membersPath = scanner.nextLine();
+
+        System.out.println("Please input path to CSV file containing Library Checkouts: (default to Checkouts.csv) ");
+        String checkoutsPath = scanner.nextLine();
+        scanner.close();
+
+        Library library = new Library();
+
+        try (FileInputStream itemsStream = new FileInputStream(itemsPath);
+             FileInputStream membersStream = new FileInputStream(membersPath);
+             FileInputStream checkoutsStream = new FileInputStream(checkoutsPath)) {
+            
+             library.loadItems(itemsStream);
+             library.loadMembers(membersStream);
+             library.loadCheckouts(checkoutsStream);
+            
+             System.out.println("Library data loaded successfully!");
+            
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        } catch (CsvException e) {
+            System.err.println("Error parsing CSV: " + e.getMessage());
+        }
+
+    }
+
 }
