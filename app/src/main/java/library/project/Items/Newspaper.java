@@ -5,12 +5,30 @@ import library.project.LibraryItem;
 
 public class Newspaper extends LibraryItem {
     
-    protected enum NewspaperPublisher {
+    public enum NewspaperPublisher {
         NEW_YORK_TIMES,
         LOS_ANGELES_TIMES,
         WALL_STREET_JOURNAL,
         USA_TODAY,
-        WASHINGTON_POST
+        WASHINGTON_POST,
+        OTHER;
+
+        public static NewspaperPublisher fromString(String str) {
+            switch (str) {
+                case "NYT":
+                    return NewspaperPublisher.NEW_YORK_TIMES;
+                case "LAT":
+                    return NewspaperPublisher.LOS_ANGELES_TIMES;
+                case "WSJ":
+                    return NewspaperPublisher.WALL_STREET_JOURNAL;
+                case "USA Today":
+                    return NewspaperPublisher.USA_TODAY;
+                case "Washington Post":
+                    return NewspaperPublisher.WASHINGTON_POST;
+                default:
+                    return NewspaperPublisher.OTHER;
+            }
+        }
     }
 
     protected NewspaperPublisher publisher;

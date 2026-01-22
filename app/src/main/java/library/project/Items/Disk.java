@@ -4,9 +4,24 @@ import library.project.LibraryItem;
 
 public class Disk extends LibraryItem {
     
-    protected enum DiskType {
+    public enum DiskType {
         CD,
-        DVD
+        DVD,
+        BLURAY,
+        OTHER;
+
+        public static DiskType fromString(String str) {
+            switch (str) {
+                case "CD":
+                    return DiskType.CD;
+                case "DVD":
+                    return DiskType.DVD;
+                case "Bluray":
+                    return DiskType.BLURAY;
+                default:
+                    return DiskType.OTHER;
+            }
+        }
     }
 
     protected DiskType diskType;

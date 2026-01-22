@@ -4,10 +4,24 @@ import library.project.LibraryItem;
 
 public class Book extends LibraryItem {
 
-    protected enum BookGenre {
+    public enum BookGenre {
         FANTASY_FICTION,
         REALISTIC_FICTION,
         NON_FICTION,
+        OTHER;
+
+        public static BookGenre fromString(String str) {
+            switch (str) {
+                case "Fantasy":
+                    return BookGenre.FANTASY_FICTION;
+                case "Realistic":
+                    return BookGenre.REALISTIC_FICTION;
+                case "Nonfiction":
+                    return BookGenre.NON_FICTION;
+                default:
+                    return BookGenre.OTHER;
+            }
+        }
     }
 
     protected String author;
@@ -20,9 +34,10 @@ public class Book extends LibraryItem {
         this.genre = genre;
     }
 
-    public Book(int id, String title, String author, boolean avaliability) {
+    public Book(int id, String title, String author, BookGenre genre, boolean avaliability) {
         super(id, title, avaliability);
         this.author = author;
+        this.genre = genre;
     }
 
 }

@@ -3,9 +3,23 @@ package library.project;
 import java.util.ArrayList;
 
 public class Member {
+
+    private static int nextID = 0;
+    protected int id;
     
     protected ArrayList<LibraryItem> ItemsCheckedOut;
     protected String Name;
+
+    public Member(String name) {
+        this.Name = name;
+        this.id = nextID;
+
+        nextID++;
+    }
+    public Member(String name, int id) {
+        this.Name = name;
+        this.id = id;
+    }
 
     public ArrayList<LibraryItem> getCheckedOut() {
         return ItemsCheckedOut;

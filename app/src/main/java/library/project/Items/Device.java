@@ -4,10 +4,24 @@ import library.project.LibraryItem;
 
 public class Device extends LibraryItem {
     
-    protected enum DeviceType {
+    public enum DeviceType {
         LAPTOP,
         IPAD,
-        DESKTOP
+        DESKTOP,
+        OTHER;
+
+        public static DeviceType fromString(String str) {
+            switch (str) {
+                case "Laptop":
+                    return DeviceType.LAPTOP;
+                case "IPad":
+                    return DeviceType.IPAD;
+                case "Desktop":
+                    return DeviceType.DESKTOP;
+                default:
+                    return DeviceType.OTHER;
+            }
+        }
     }
 
     protected DeviceType deviceType;
