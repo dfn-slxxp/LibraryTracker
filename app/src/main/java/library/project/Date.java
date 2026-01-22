@@ -45,7 +45,7 @@ public class Date {
     }
 
 
-    public Date Earliest(Date date1, Date date2) {
+    public static Date Earliest(Date date1, Date date2) {
         if (date1.getYear() < date2.getYear()) {
             return date1;
         }
@@ -68,6 +68,34 @@ public class Date {
                 } 
                 else {
                     return date1;
+                }
+            }
+        }
+    }
+
+    public boolean isEarlier(Date date2) {
+        if (this.getYear() < date2.getYear()) {
+            return true;
+        }
+        else if (date2.getYear() < this.getYear()) {
+            return false;
+        } 
+        else {
+            if (this.getMonth() < date2.getMonth()) {
+                return true;
+            }
+            else if (date2.getMonth() < this.getMonth()) {
+                return false;
+            } 
+            else {
+                if (this.getDay() < date2.getDay()) {
+                    return true;
+                }
+                else if (date2.getDay() < this.getDay()) {
+                    return false;
+                } 
+                else {
+                    return true;
                 }
             }
         }

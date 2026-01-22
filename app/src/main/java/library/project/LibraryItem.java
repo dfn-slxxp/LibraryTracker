@@ -47,6 +47,14 @@ public abstract class LibraryItem {
         return id;
     }
 
+    public Date getCheckoutDate() {
+        return CheckOutDate.get();
+    }
+
+    public Date getDueDate() {
+        return DueDate.get();
+    }
+
     // Setters
     public void setItemName(String name) {
         ItemName = name;

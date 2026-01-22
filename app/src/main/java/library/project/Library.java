@@ -29,17 +29,6 @@ public class Library {
         this.items = items;
     }
 
-    public ArrayList<LibraryItem> getCheckedOut() {
-        ArrayList<LibraryItem> checkedOut = new ArrayList<>();
-        for (Member member : members) {
-            for (LibraryItem item : member.getCheckedOut()) {
-                checkedOut.add(item);
-            }
-        }
-
-        return checkedOut;
-    }
-
     public void loadItems(InputStream stream) throws IOException, CsvException {
         this.items = new ArrayList<LibraryItem>();
         List<String[]> fileContents = this.readCSV(stream);
@@ -64,11 +53,11 @@ public class Library {
     }
 
     public void sortMembersByID() {
-        for (int i = 0; i < this.members.size(); i++) {
+        for (int i = 0; i < this.members.size() - 1; i++) {
 
             int min_idx = i;
 
-            for (int j = i + 1; j < this.members.size(); j++) {
+            for (int j = i + 1; j < this.members.size() - 1; j++) {
 
                 if (members.get(j).getId() < members.get(min_idx).getId()) {
 
@@ -88,11 +77,11 @@ public class Library {
     }
 
     public void sortItemsByID() {
-        for (int i = 0; i < this.items.size(); i++) {
+        for (int i = 0; i < this.items.size() - 1; i++) {
 
             int min_idx = i;
 
-            for (int j = i + 1; j < this.items.size(); j++) {
+            for (int j = i + 1; j < this.items.size() - 1; j++) {
 
                 if (items.get(j).getId() < items.get(min_idx).getId()) {
 
@@ -157,5 +146,48 @@ public class Library {
             }
         }
     }
+
+    public ArrayList<LibraryItem> getCheckedOutItems() {
+        ArrayList<LibraryItem> checkedOut = new ArrayList<LibraryItem>();
+        for (LibraryItem item : items) {
+            if (item.checkAvaliability() == false) {
+                checkedOut.add(item);
+            }
+        }
+        return checkedOut;
+    }
+
+    public ArrayList<LibraryItem> getItemsDueSoonest() {
+        ArrayList<LibraryItem> checkedOut = getCheckedOutItems();
+        boolean swapped;
+        LibraryItem temp;
+
+        for (int i = 0; i < checkedOut.size() - 1; i++) {
+
+            swapped = false;
+
+            for (int j = 0; i < checkedOut.size() - i - 1; j++) {
+
+                if (false == checkedOut.get(j).getDueDate().isEarlier(checkedOut.get(j + 1).getDueDate())) {
+
+                    temp = checkedOut.get(j);
+                    checkedOut.set(j, checkedOut.get(j + 1));
+                    checkedOut.set(j + 1, temp);
+                    swapped = true;
+
+                }
+
+            }
+
+            if (swapped == false) {
+                break;
+            }
+
+        }
+
+        return checkedOut;
+
+    }
+
 
 }
