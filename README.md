@@ -1,6 +1,9 @@
 # LibraryTracker
 LibraryTracker-an app to keep track of and organize resources in Libraries. Built using skills needed for the AP CS A exam.
 
+## About Me
+I'm Sebastian Waldman, Currently in Ms. Mouzakitis's Period 6 Annual Intro to CS class.
+
 ## Features
 * Import important items commonly located in libraries via a CSV file
 * Import members of a library via a CSV file
