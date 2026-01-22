@@ -189,5 +189,26 @@ public class Library {
 
     }
 
+    public ArrayList<LibraryItem> getItemsCheckedOutLongest() {
+        ArrayList<LibraryItem> checkedOut = getCheckedOutItems();
+
+        for (int i = 1; i < checkedOut.size(); i++) {
+
+            LibraryItem key = checkedOut.get(i);
+            int j = i - 1;
+
+            while (j >= 0 &&  key.getCheckoutDate().isEarlier(checkedOut.get(j).getCheckoutDate())) {
+                checkedOut.set(j + 1, checkedOut.get(j));
+                j--;
+            }
+
+            checkedOut.set(j + 1, key);
+
+        }
+
+        return checkedOut;
+
+    }
+
 
 }
