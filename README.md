@@ -81,4 +81,4 @@ In the directory of the project, run
     ./gradlew run
     ```
 
-2. You will then be promped to enter File Paths to your CSV files. They will default to the test files in "app/src/main/resources".
+2. You will then be prompted to enter File Paths to your CSV files. The files will default to the test files in "app/src/main/resources".
