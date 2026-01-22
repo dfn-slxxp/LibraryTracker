@@ -13,12 +13,14 @@ public class Member {
     public Member(String name) {
         this.Name = name;
         this.id = nextID;
+        this.ItemsCheckedOut = new ArrayList<LibraryItem>();
 
         nextID++;
     }
     public Member(String name, int id) {
         this.Name = name;
         this.id = id;
+        this.ItemsCheckedOut = new ArrayList<LibraryItem>();
     }
 
     public ArrayList<LibraryItem> getCheckedOut() {
@@ -45,6 +47,7 @@ public class Member {
                 item.printCheckedOutItem();
             }
         }
+        System.out.println("----------");
     }
 
 }

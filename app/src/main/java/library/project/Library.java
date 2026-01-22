@@ -56,7 +56,7 @@ public class Library {
 
             int min_idx = i;
 
-            for (int j = i + 1; j < this.members.size() - 1; j++) {
+            for (int j = i + 1; j < this.members.size(); j++) {
 
                 if (members.get(j).getId() < members.get(min_idx).getId()) {
 
@@ -80,7 +80,7 @@ public class Library {
 
             int min_idx = i;
 
-            for (int j = i + 1; j < this.items.size() - 1; j++) {
+            for (int j = i + 1; j < this.items.size(); j++) {
 
                 if (items.get(j).getId() < items.get(min_idx).getId()) {
 
@@ -127,7 +127,6 @@ public class Library {
     }
 
     public void loadCheckouts(InputStream stream) throws IOException, CsvException {
-        this.members = new ArrayList<Member>();
         List<String[]> fileContents = this.readCSV(stream);
         for (String[] checkouts : fileContents) {
             int member_iden = Integer.parseInt(checkouts[0]);
@@ -165,7 +164,7 @@ public class Library {
 
             swapped = false;
 
-            for (int j = 0; i < checkedOut.size() - i - 1; j++) {
+            for (int j = 0; j < checkedOut.size() - i - 1; j++) {
 
                 if (false == checkedOut.get(j).getDueDate().isEarlier(checkedOut.get(j + 1).getDueDate())) {
 
@@ -213,7 +212,22 @@ public class Library {
         for (Member member : members) {
             member.printCheckedOutItems();
         }
+        System.out.println("==========");
     }
 
+    public void printCheckedOutLongest() {
+        System.out.println("Here are the items that have been Checked out the longest:");
+        for (LibraryItem item : getItemsCheckedOutLongest()) {
+            item.printCheckedOutItem();
+        }
+        System.out.println("==========");
+    }
 
+    public void printDueSoonest() {
+        System.out.println("Here are the items that are Due the soonest:");
+        for (LibraryItem item : getItemsDueSoonest()) {
+            item.printCheckedOutItem();
+        }
+        System.out.println("==========");
+    }
 }
